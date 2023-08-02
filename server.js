@@ -52,6 +52,29 @@ app.post('/api/add-movie', (req, res) => {
     })
 });
 
+app.put('/api/review/:id', (req, res) => {
+    db.query(`UPDATE reviews SET review = 'This movie is great!' WHERE id = 2`, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(result)
+            console.log('Review added!')
+        }
+    })
+});
+
+app.delete('/api/movie/:id', (req, res) => {
+    db.query(`DELETE FROM movie_names WHERE id = 2`, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(result)
+            console.log('Movie deleted!')
+        }
+    })
+});
+
+
 app.listen(PORT, () => {
     console.log(PORT);
 });
