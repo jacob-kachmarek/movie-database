@@ -18,3 +18,29 @@ const db = mysql.createConnection(
     },
     console.log('Connected to the movies_db database.')
 );
+
+app.get('/api/movies', (req, res) => {
+    db.query('SELECT * FROM movie_names', (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.json(result)
+            console.log('data received')
+        }
+    })
+});
+
+app.get('/api/reviews', (req, res) => {
+    db.query('SELECT * FROM reviews', (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.json(result)
+            console.log('data received')
+        }
+    })
+});
+
+app.listen(PORT, () => {
+    console.log(PORT);
+});
