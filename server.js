@@ -25,7 +25,7 @@ app.get('/api/movies', (req, res) => {
             console.log(err)
         } else {
             res.json(result)
-            console.log('data received')
+            console.log('Data Received')
         }
     })
 });
@@ -36,7 +36,18 @@ app.get('/api/reviews', (req, res) => {
             console.log(err)
         } else {
             res.json(result)
-            console.log('data received')
+            console.log('Data Received')
+        }
+    })
+});
+
+app.post('/api/add-movie', (req, res) => {
+    db.query(`INSERT INTO movie_names (mov_name) VALUES ('Toy Story')`, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(result)
+            console.log('Movie added!')
         }
     })
 });
